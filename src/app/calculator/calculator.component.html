@@ -1,0 +1,56 @@
+<app-examples (onExampleChange)="setExample($event)"></app-examples>
+
+<div class="calculator">
+    <h2>Calculate</h2>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label" for="calculator_weight">Shipment Weight</label>
+                    <div class="input-group">
+                        <input required id="calculator_weight" type="text" [(ngModel)]="weight"  name="weight" class="form-control"><span class="input-group-addon">kg</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group" >
+                    <label class="control-label" for="calculator_country">Country</label>
+                    <select required id="calculator_country" [(ngModel)]="country" name="country"  class="form-control">
+                        <option *ngFor="let country of countries" value="{{country.code}}" >{{country.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label" for="calculator_cost">Items Cost</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">$</span>
+                        <input required id="calculator_cost" type="text" [(ngModel)]="cost"  name="cost" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label> <input [(ngModel)]="shop_help" name="shop_help" type="checkbox"> Shop help </label>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label> <input [(ngModel)]="insurance" name="insurance" type="checkbox"> Insurance </label>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <button [attr.disabled]="isLoading" type="submit" class="btn btn-block btn-primary">Calculate</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="loader" *ngIf="isLoading"></div>
+
+<app-calculation-result class="result" *ngIf="isCalculated" [methods]="methods">
+</app-calculation-result>

@@ -1,0 +1,79 @@
+<div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li *ngFor="let method of methods" role="presentation" [ngClass]="{'active': methods.indexOf(method) == 0}">
+            <a href="#{{method.method}}" aria-controls="home" role="tab" data-toggle="tab">{{method.method}}</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div *ngFor="let method of methods" role="tabpanel" class="tab-pane" [ngClass]="{'active': methods.indexOf(method) == 0}" id="{{method.method}}">
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="info">
+                        <i class="glyphicon glyphicon-exclamation-sign"></i>
+                        {{method.customs_info}}
+                    </div>
+                    <div class="date">
+                        <i class="glyphicon glyphicon-map-marker"></i>
+                        Delivery date: {{method.delivery_time}}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <table class="table table-condensed">
+                        <tr>
+                            <td>
+                                Shipping:
+                            </td>
+                            <td>
+                                ${{method.shipping_cost}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Insurance:
+                            </td>
+                            <td>
+                                ${{method.insurance}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Packing:
+                            </td>
+                            <td>
+                                ${{method.packing}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Payment gateway fee:
+                            </td>
+                            <td>
+                                ${{method.payment_gateway_fee}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Shophelp:
+                            </td>
+                            <td>
+                                ${{method.shop_help}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                TOTAL:
+                            </td>
+                            <td>
+                                ${{method.total}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
